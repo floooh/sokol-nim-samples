@@ -1,0 +1,4 @@
+.vscode/
+nimcache/
+*.exe
+clear
