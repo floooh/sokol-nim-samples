@@ -13,12 +13,12 @@ glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
 let win = glfw.CreateWindow(640, 480, "Triangle (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
 flextgl.init()
-var desc = sg.sg_desc()
+var desc = sg.desc()
 sg.setup(desc)
 
 # a pass action (clear to color)
-var pass_action = sg.sg_pass_action()
-pass_action.colors[0].action = SG_ACTION_CLEAR
+var pass_action = sg.pass_action()
+pass_action.colors[0].action = ACTION_CLEAR
 pass_action.colors[0].val = [1.0f, 0.0f, 0.0f, 1.0f]
 
 # draw loop
