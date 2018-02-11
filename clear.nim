@@ -11,8 +11,7 @@ glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
 glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
 let win = glfw.CreateWindow(640, 480, "Clear (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
-var desc = sg.desc()
-sg.setup(desc)
+sg.setup(sg.desc())
 
 # a pass action (clear to color)
 var pass_action = sg.pass_action(

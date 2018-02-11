@@ -9,8 +9,7 @@ glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
 glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
 let win = glfw.CreateWindow(640, 480, "Cube (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
-var desc = sg.desc()
-sg.setup(desc)
+sg.setup(sg.desc())
 
 # a cube vertex buffer
 var verts: array[168, float32] = [
@@ -44,11 +43,10 @@ var verts: array[168, float32] = [
      1.0f,  1.0f,  1.0f,   1.0f, 0.0f, 0.5f, 1.0f, 
      1.0f,  1.0f, -1.0f,   1.0f, 0.0f, 0.5f, 1.0f    
 ]
-var vbuf_desc = sg.buffer_desc(
+let vbuf = sg.make_buffer(sg.buffer_desc(
     size: sizeof(verts).cint,
     content: addr(verts)
-)
-let vbuf = sg.make_buffer(vbuf_desc)
+))
 
 # a cube index buffer
 var indices: array[36, uint16] = [
@@ -59,19 +57,18 @@ var indices: array[36, uint16] = [
     16u16, 17u16, 18u16,  16u16, 18u16, 19u16,
     22u16, 21u16, 20u16,  23u16, 22u16, 20u16
 ]
-var ibuf_desc = sg.buffer_desc(
+let ibuf = sg.make_buffer(sg.buffer_desc(
     type: BUFFERTYPE_INDEXBUFFER,
     size: sizeof(indices).int32,
     content: addr(indices)
-)
-let ibuf = sg.make_buffer(ibuf_desc)
+))
 
 # a uniform block with a model-view-projection matrix
 type params_t = object
     mvp: Mat4f
 
 # a shader
-var shd_desc = sg.shader_desc(
+let shd = sg.make_shader(sg.shader_desc(
     vs: stage_desc(
         uniform_blocks: %[
             uniform_block_desc(
@@ -103,11 +100,10 @@ var shd_desc = sg.shader_desc(
             }
             """
     )
-)
-let shd = sg.make_shader(shd_desc)
+))
 
 # a pipeline state object
-var pip_desc = sg.pipeline_desc(
+let pip = sg.make_pipeline(sg.pipeline_desc(
     shader: shd,
     layout: layout_desc(
         attrs: %[
@@ -123,18 +119,17 @@ var pip_desc = sg.pipeline_desc(
     rasterizer: rasterizer_desc(
         cull_mode: CULLMODE_BACK
     )
-)
-let pip = sg.make_pipeline(pip_desc)
+))
 
 # a draw state with the resource bindings
-var draw_state = sg.draw_state(
+let draw_state = sg.draw_state(
     pipeline: pip,
     vertex_buffers: %[vbuf],
     index_buffer: ibuf
 )
 
 # a default pass action (clear to grey)
-var pass_action = sg.pass_action()
+let pass_action = sg.pass_action()
 
 # a view-projection matrix
 const proj = perspective(radians(60.0f), 640.0f/480.0f, 0.01f, 100.0f)
