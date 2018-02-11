@@ -1,4 +1,7 @@
-import glfw3 as glfw, opengl, glm, sokol/gfx as sg
+import glfw3 as glfw
+import opengl
+import glm
+import sokol/gfx as sg
 
 # initialize GLFW, FlextGL and sokol
 if glfw.Init() != 1:
