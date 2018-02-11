@@ -14,9 +14,6 @@ glfw.MakeContextCurrent(win)
 var desc = sg.desc()
 sg.setup(desc)
 
-# a draw state to be filled with the resource bindings
-var draw_state = sg.draw_state()
-
 # a vertex buffer
 var vertices = [
     # positions            colors
@@ -28,11 +25,11 @@ var vbuf_desc = sg.buffer_desc(
     size: sizeof(vertices).cint,
     content: addr(vertices)
 )
-draw_state.vertex_buffers[0] = sg.make_buffer(vbuf_desc)
+let vbuf = sg.make_buffer(vbuf_desc)
 
 # a shader
 var shd_desc = sg.shader_desc(
-    vs: sg.shader_stage_desc(
+    vs: stage_desc(
         source: """
             #version 330
             in vec4 position;
@@ -43,7 +40,7 @@ var shd_desc = sg.shader_desc(
                 color = color0;
             }
         """),
-    fs: sg.shader_stage_desc(
+    fs: stage_desc(
         source: """
             #version 330
             in vec4 color;
@@ -56,11 +53,22 @@ var shd_desc = sg.shader_desc(
 let shd = sg.make_shader(shd_desc)
 
 # a pipeline state object
-var pip_desc = sg.pipeline_desc()
-pip_desc.shader = shd
-pip_desc.layout.attrs[0] = sg.vertex_attr_desc(name: "position", format: VERTEXFORMAT_FLOAT3)
-pip_desc.layout.attrs[1] = sg.vertex_attr_desc(name: "color0", format: VERTEXFORMAT_FLOAT4)
-draw_state.pipeline = sg.make_pipeline(pip_desc)
+var pip_desc = sg.pipeline_desc(
+    shader: shd,
+    layout: layout_desc(
+        attrs: %[
+            attr_desc(name: "position", format: VERTEXFORMAT_FLOAT3),
+            attr_desc(name: "color0", format: VERTEXFORMAT_FLOAT4)
+        ]
+    )
+)
+let pip = sg.make_pipeline(pip_desc)
+
+# a draw state with the resource bindings
+var draw_state = sg.draw_state(
+    pipeline: pip,
+    vertex_buffers: %[vbuf]
+)
 
 # a default pass action (clears to grey)
 var pass_action = sg.pass_action()

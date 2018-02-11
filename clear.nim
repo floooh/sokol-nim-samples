@@ -15,15 +15,16 @@ var desc = sg.desc()
 sg.setup(desc)
 
 # a pass action (clear to color)
-var pass_action = sg.pass_action()
-pass_action.colors[0].action = ACTION_CLEAR
-pass_action.colors[0].val = [1.0f, 0.0f, 0.0f, 1.0f]
+var pass_action = sg.pass_action(
+    colors: %[
+        color_attachment_action(action: ACTION_CLEAR, val: [1.0f, 0.0f, 0.0f, 1.0f])
+    ]
+)
 
 # draw loop
 while glfw.WindowShouldClose(win) == 0:
     # animate clear color
-    var g = pass_action.colors[0].val[1] + 0.01
-    if (g > 1.0f): g = 0.0f
+    var g = (pass_action.colors[0].val[1] + 0.01).clamp(0.0, 1.0)
     pass_action.colors[0].val[1] = g;
 
     var w, h: cint
