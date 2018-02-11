@@ -23,7 +23,8 @@ var pass_action = sg.pass_action(
 # draw loop
 while glfw.WindowShouldClose(win) == 0:
     # animate clear color
-    var g = (pass_action.colors[0].val[1] + 0.01).clamp(0.0, 1.0)
+    var g = (pass_action.colors[0].val[1] + 0.01f)
+    if g > 1.0f: g = 0.0f
     pass_action.colors[0].val[1] = g;
 
     var w, h: cint
