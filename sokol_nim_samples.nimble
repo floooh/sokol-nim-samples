@@ -5,7 +5,17 @@ author        = "Andre Weissflog"
 description   = "Example code for https://github.com/floooh/sokol-nim"
 license       = "MIT"
 
-bin = @["clear", "triangle", "cube", "texcube", "offscreen"]
+bin = @[
+    "clear",
+    "triangle",
+    "quad",
+    "cube",
+    "texcube",
+    "offscreen",
+    "instancing",
+    "blendtest",
+    "dyntex"
+]
 
 # Dependencies
 
