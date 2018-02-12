@@ -52,13 +52,13 @@ let vbuf = sg.make_buffer(sg.buffer_desc(
 ))
 
 # a cube index buffer
-var indices: array[36, uint16] = [
-     0u16,  1u16,  2u16,   0u16,  2u16,  3u16,
-     6u16,  5u16,  4u16,   7u16,  6u16,  4u16,
-     8u16,  9u16, 10u16,   8u16, 10u16, 11u16,
-    14u16, 13u16, 12u16,  15u16, 14u16, 12u16,
-    16u16, 17u16, 18u16,  16u16, 18u16, 19u16,
-    22u16, 21u16, 20u16,  23u16, 22u16, 20u16
+var indices = [
+     0u16, 1,  2,   0,  2,  3,
+     6,    5,  4,   7,  6,  4,
+     8,    9, 10,   8, 10, 11,
+    14,   13, 12,  15, 14, 12,
+    16,   17, 18,  16, 18, 19,
+    22,   21, 20,  23, 22, 20
 ]
 let ibuf = sg.make_buffer(sg.buffer_desc(
     type: BUFFERTYPE_INDEXBUFFER,
