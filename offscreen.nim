@@ -1,9 +1,19 @@
+# offscreen rendering
+#
+#   - renders a rotating cube into an offscreen render target...
+#   - ...and uses the offscreen render target as texture for 
+#     rendering a textured cube to the default framebuffer
+#   - a pass object with a color- and depth-image attachemnt
+#   - 2 sets of shaders and pipeline-state-objects, one for 
+#     offscreen rendering, the other for rendering into the
+#     default framebuffer
+#
 import glfw3 as glfw
 import opengl
 import glm
 import sokol/gfx as sg
 
-# initialize GLFW, FlextGL and sokol
+# initialize GLFW and sokol-gfx
 if glfw.Init() != 1:
     quit(QUIT_FAILURE)
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)

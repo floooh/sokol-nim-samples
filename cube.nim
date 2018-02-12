@@ -1,9 +1,15 @@
+# renders a rotating cube:
+#
+#   - a uniform blocks with a model-view-projection matrix, updated each frame
+#   - a shader with a uniform block declaration
+#   - a more interesting pipeline state object with depth-test and backface culling
+#
 import glfw3 as glfw
 import opengl
 import glm
 import sokol/gfx as sg
 
-# initialize GLFW, FlextGL and sokol
+# initialize GLFW and sokol-gfx
 if glfw.Init() != 1:
     quit(QUIT_FAILURE)
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)

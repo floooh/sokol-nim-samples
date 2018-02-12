@@ -1,8 +1,13 @@
+# just clears the framebuffer:
+#
+#   - basic initialization and draw loop
+#   - clearing through a pass action
+
 import glfw3 as glfw
 import opengl
 import sokol/gfx as sg
 
-# initialize GLFW, FlextGL and sokol
+# initialize GLFW and sokol-gfx
 if glfw.Init() != 1:
     quit(QUIT_FAILURE)
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)
