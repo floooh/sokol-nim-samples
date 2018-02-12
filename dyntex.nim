@@ -216,10 +216,10 @@ while glfw.WindowShouldClose(win) == 0:
     # rotated model-view-proj matrix
     rx += 1.0f
     ry += 2.0f;
-    var rxm = rotate(mat4f(1.0f), radians(rx), 1.0f, 0.0f, 0.0f)
-    var rym = rotate(mat4f(1.0f), radians(ry), 0.0f, 1.0f, 0.0f)
-    var model = rxm * rym
-    var mvp = proj * view * model
+    let rxm = rotate(mat4f(1.0f), radians(rx), 1.0f, 0.0f, 0.0f)
+    let rym = rotate(mat4f(1.0f), radians(ry), 0.0f, 1.0f, 0.0f)
+    let model = rxm * rym
+    let mvp = proj * view * model
     params.mvp = mvp
     
     # update game-of-life state
