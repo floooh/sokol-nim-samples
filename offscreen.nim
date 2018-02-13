@@ -275,7 +275,7 @@ while glfw.WindowShouldClose(win) == 0:
     # render an untextured cube into the offscreen pass
     sg.begin_pass(offscreen_pass, offscreen_pass_action)
     sg.apply_draw_state(offscreen_ds)
-    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params).cint)
+    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params))
     sg.draw(0, 36, 1)
     sg.end_pass()
 
@@ -284,7 +284,7 @@ while glfw.WindowShouldClose(win) == 0:
     glfw.GetFramebufferSize(win, addr(w), addr(h))
     sg.begin_default_pass(default_pass_action, w, h)
     sg.apply_draw_state(default_ds)
-    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params).cint)
+    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params))
     sg.draw(0, 36, 1)
     sg.end_pass()
     sg.commit()

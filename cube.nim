@@ -161,7 +161,7 @@ while glfw.WindowShouldClose(win) == 0:
     glfw.GetFramebufferSize(win, addr(w), addr(h))
     sg.begin_default_pass(pass_action, w, h)
     sg.apply_draw_state(draw_state)
-    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params).cint)
+    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params))
     sg.draw(0, 36, 1)
     sg.end_pass()
     sg.commit()

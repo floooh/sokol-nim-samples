@@ -185,7 +185,7 @@ while glfw.WindowShouldClose(win) == 0:
     # the background quad
     draw_state.pipeline = bg_pip
     sg.apply_draw_state(draw_state)
-    sg.apply_uniform_block(SHADERSTAGE_FS, 0, addr(fs_params), sizeof(fs_params).cint)
+    sg.apply_uniform_block(SHADERSTAGE_FS, 0, addr(fs_params), sizeof(fs_params))
     sg.draw(0, 4, 1)
 
     # the blended quads
@@ -201,7 +201,7 @@ while glfw.WindowShouldClose(win) == 0:
             # ...and the draw call
             draw_state.pipeline = pips[src][dst]
             sg.apply_draw_state(draw_state)
-            sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(vs_params), sizeof(vs_params).cint)
+            sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(vs_params), sizeof(vs_params))
             sg.draw(0, 4, 1)
 
     sg.end_pass()

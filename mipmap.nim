@@ -175,7 +175,7 @@ while glfw.WindowShouldClose(win) == 0:
             fs_images: %[ img[i] ]
         ))
         params.mvp = view_proj * model
-        sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params).cint)
+        sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params))
         sg.draw(0, 4, 1)
     sg.end_pass()
     sg.commit()

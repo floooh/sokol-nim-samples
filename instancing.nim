@@ -171,7 +171,7 @@ while glfw.WindowShouldClose(win) == 0:
             vel[i] *= 0.8f
 
     # update instance data
-    sg.update_buffer(vbuf_inst, addr(pos), sizeof(pos).cint)
+    sg.update_buffer(vbuf_inst, addr(pos), sizeof(pos))
 
     # update model-view-proj matrix
     roty += radians(1.0f)
@@ -182,8 +182,8 @@ while glfw.WindowShouldClose(win) == 0:
     glfw.GetFramebufferSize(win, addr(w), addr(h))
     sg.begin_default_pass(pass_action, w, h)
     sg.apply_draw_state(draw_state)
-    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params).cint)
-    sg.draw(0, 24, num_particles.cint)
+    sg.apply_uniform_block(SHADERSTAGE_VS, 0, addr(params), sizeof(params))
+    sg.draw(0, 24, num_particles)
     sg.end_pass()
     sg.commit()
     glfw.SwapBuffers(win)
