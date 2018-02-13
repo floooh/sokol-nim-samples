@@ -14,7 +14,10 @@ bin = @[
     "offscreen",
     "instancing",
     "blendtest",
-    "dyntex"
+    "dyntex",
+    "mrt",
+    "arraytex",
+    "mipmap"
 ]
 
 # Dependencies

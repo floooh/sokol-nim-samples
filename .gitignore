@@ -11,3 +11,5 @@ instancing
 blendtest
 dyntex
 mrt
+arraytex
+mipmap
