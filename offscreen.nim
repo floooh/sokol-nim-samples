@@ -256,7 +256,6 @@ let default_ds = sg.draw_state(
     fs_images: %[color_img]
 )
 
-# a view-projection matrix
 const proj = perspective(radians(45.0f), 640.0f/480.0f, 0.01f, 100.0f)
 const view = lookAt(vec3(0.0f, 1.5f, 6.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f))
 var params = params_t()
