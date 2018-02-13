@@ -5,7 +5,6 @@
 #   - note the vertex-layout in the pipeline state object
 #   - ...and the 2 vertex buffers in the draw-state
 #
-import opengl
 import glm
 import random
 import glfw3 as glfw
@@ -32,7 +31,7 @@ if glfw.Init() != 1:
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)
 glfw.WindowHint(CONTEXT_VERSION_MINOR, 3)
 glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
-glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
+glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(640, 480, "Instancing (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
 sg.setup(sg.desc())

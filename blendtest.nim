@@ -5,7 +5,6 @@
 #     operations and render quads in front of a checkered background
 #   - also, this uses a triangle-strip for the quads
 #
-import opengl
 import glm
 import glfw3 as glfw
 import sokol/gfx as sg
@@ -27,7 +26,7 @@ if glfw.Init() != 1:
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)
 glfw.WindowHint(CONTEXT_VERSION_MINOR, 3)
 glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
-glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
+glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(WIDTH, HEIGHT, "Quad (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
 

@@ -3,7 +3,6 @@
 #   - same as the cube sample, but with a texture created from data in memory
 
 import glfw3 as glfw
-import opengl
 import glm
 import sokol/gfx as sg
 
@@ -13,7 +12,7 @@ if glfw.Init() != 1:
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)
 glfw.WindowHint(CONTEXT_VERSION_MINOR, 3)
 glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
-glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
+glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(640, 480, "Textured Cube (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
 sg.setup(sg.desc())

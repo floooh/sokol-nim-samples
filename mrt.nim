@@ -4,7 +4,6 @@
 #     an offscreen-pass
 #   - ...and access those images later in unique textures
 #
-import opengl
 import glfw3 as glfw
 import glm
 import math
@@ -27,7 +26,7 @@ if glfw.Init() != 1:
 glfw.WindowHint(CONTEXT_VERSION_MAJOR, 3)
 glfw.WindowHint(CONTEXT_VERSION_MINOR, 3)
 glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
-glfw.WindowHint(OPENGL_FORWARD_COMPAT, GL_TRUE.cint)
+glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(WIDTH, HEIGHT, "Multiple Rendertarget (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
 sg.setup(sg.desc())
