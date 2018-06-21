@@ -35,10 +35,11 @@ var even_odd = 0u32
 for layer in 0..<IMG_LAYERS:
     for y in 0..<IMG_HEIGHT:
         for x in 0..<IMG_WIDTH:
-            pixels[layer][y][x] = if (even_odd and 1) == 0: 0xFF000000u32 else: case layer
-                of 0: 0xFF0000FFu32
-                of 1: 0xFF00FF00u32
-                else: 0xFFFF0000u32
+            pixels[layer][y][x] = if (even_odd and 1) == 0: 0xFF000000u32 else:
+                case layer
+                    of 0: 0xFF0000FFu32
+                    of 1: 0xFF00FF00u32
+                    else: 0xFFFF0000u32
             even_odd += 1
         even_odd += 1
 let img = sg.make_image(image_desc(
