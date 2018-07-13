@@ -21,6 +21,8 @@ glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
 glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(640, 480, "Offscreen Rendering (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
+when defined(windows):
+    discard gladLoadGL()
 sg.setup(sg.desc())
 
 # create a render target with a color- and depth-image

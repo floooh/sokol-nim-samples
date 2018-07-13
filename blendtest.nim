@@ -29,6 +29,8 @@ glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
 glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(WIDTH, HEIGHT, "Quad (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
+when defined(windows):
+    discard gladLoadGL()
 
 # need to bump up the default pool size for pipeline objects in sokol-gfx
 sg.setup(sg.desc(
