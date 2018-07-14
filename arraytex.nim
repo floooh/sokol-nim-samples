@@ -27,6 +27,8 @@ glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
 glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(WIDTH, HEIGHT, "Array Texture (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
+when defined(windows):
+    discard gladLoadGL()
 sg.setup(sg.desc())
 
 # a 16x16 array texture with 3 layers and a checkerboard pattern

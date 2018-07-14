@@ -29,6 +29,8 @@ glfw.WindowHint(OPENGL_PROFILE, OPENGL_CORE_PROFILE)
 glfw.WindowHint(OPENGL_FORWARD_COMPAT, 1)
 let win = glfw.CreateWindow(WIDTH, HEIGHT, "Multiple Rendertarget (sokol-nim)", nil, nil)
 glfw.MakeContextCurrent(win)
+when defined(windows):
+    discard gladLoadGL()
 sg.setup(sg.desc())
 
 # a pass object with 3 color attachment-, and one depth attachment-image

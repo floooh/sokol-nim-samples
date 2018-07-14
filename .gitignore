@@ -1,6 +1,7 @@
 .vscode/
 nimcache/
 *.exe
+*.dll
 clear
 triangle
 quad
